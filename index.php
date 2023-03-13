@@ -1,7 +1,7 @@
 <?php
     // Require the functions file to import external functions
     require('inc/functions.php');
-    
+
     // Set a local variable to display a message when the page loads
     // In this case it's an explanation which displays the MIN/MAX guess values
     $message = "Guess a number between " . RAND_MIN . " and " . RAND_MAX . ". I will tell you whether your guess was too high, too low or correct.";

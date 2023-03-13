@@ -18,6 +18,11 @@
     //     }
     // }
 
+    function active_timer()
+    {
+        
+    }
+
     // Check the user's submitted guess
     function guess_submitted()
     {
