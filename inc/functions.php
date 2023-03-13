@@ -17,8 +17,15 @@
     //         $last_guess = 
     //     }
     // }
+    //
+    // function active_timer()
+    // {
+    //
+    // }
 
-    function active_timer()
+    // Check the selected user settings
+    // Make sure to upload these to the database later [!]
+    function check_settings()
     {
         
     }

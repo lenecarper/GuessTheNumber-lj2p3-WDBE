@@ -82,6 +82,7 @@ body
     border: 1px solid white;
     width: 50%;
     height: 25%;
+    padding: 8px;
 }
 
 .previous-guess
@@ -89,4 +90,23 @@ body
     font-size: 1.2em;
     color: #fff8f8 !important;
     z-index: 999;
+}
+
+#settings-container
+{
+    background-color: green;
+    width: 50%;
+    height: 45%;
+    text-align: center;
+    padding: 6px;
+}
+
+.settings-form
+{
+    text-align: center;
+    font-size: 1.4em;
+    background: #131516;
+    border-color: rgb(79, 45, 79);
+    color: white;
+    border-radius: 3.5px;
 }
