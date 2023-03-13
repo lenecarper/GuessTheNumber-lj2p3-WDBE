@@ -1,0 +1,92 @@
+*, *::before, *::after
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    width: 100%;
+    height: 100vh;
+    background-color: #131516;
+    overflow: hidden !important;
+    font-family: sans-serif;
+    color: white;
+}
+
+#index-header
+{
+    text-align: center;
+    font-size: 4.5rem;
+    text-shadow: 0 0 12px #863dd8;
+    background: linear-gradient(to right, #b13dd8 5%, rgb(61, 213, 255) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user-message
+{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#form-container
+{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.guess-form
+{
+    text-align: center;
+    font-size: 1.4em;
+    background: #131516;
+    border-color: rgb(79, 45, 79);
+    color: white;
+}
+
+.btn-guess, .btn-reset
+{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+  
+.btn-guess:hover, .btn-reset:hover
+{
+    color: #c2c2c2;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
+
+.btn-guess
+{
+    background: #2c8b2e;
+    border-color: #2c8b2e;
+}
+
+.btn-reset
+{
+    background: #ef3636;
+    border-color: #ef3636;
+}
+
+#guess-container
+{
+    border: 1px solid white;
+    width: 50%;
+    height: 25%;
+}
+
+.previous-guess
+{
+    font-size: 1.2em;
+    color: #fff8f8 !important;
+    z-index: 999;
+}
