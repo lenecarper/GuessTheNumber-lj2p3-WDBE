@@ -101,19 +101,20 @@ body
 
 #settings-container
 {
-    background-color: green;
+    background-color: rgb(224, 224, 224);
     width: 25%;
     height: 50% !important;
     text-align: center;
     padding: 18px;
     border-radius: 10px;
+    color: #8336ef;
 }
 
 #settings-outer
 {
     display: flex;
     justify-content: center;
-    height: 55em;
+    height: 67.5em;
 }
 
 .settings-form
