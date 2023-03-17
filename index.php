@@ -1,43 +1,6 @@
 <?php
     // Require the functions file to import external functions
-    require('inc/functions.php');
-
-    // Set a local variable to display a message when the page loads
-    // In this case it's an explanation which displays the MIN/MAX guess values
-    $message = "Guess a number between " . RAND_MIN . " and " . RAND_MAX . ". I will tell you whether your guess was too high, too low or correct.";
-
-    // Store the secret number in a variable which is created when the page loads
-    $correct_guess = correct_guess();
-
-    // Check if the user has submitted a guess, increment the guess counter
-    if (guess_submitted())
-    {
-        increment_guess_count();
-
-        // Display different messages to the user after guessing depending on their answer
-        if ($correct_guess && validate_number() == true)
-        {
-            $message = "You got it! It took you " . guess_count() . " attempts. Guess again?";
-        } else if (guessed_low() && validate_number() == true)
-        {
-            $message = "Sorry, guess again but higher.";
-        } else if (guessed_high() && validate_number() == true)
-        {
-            $message = "Sorry, guess again but lower.";
-        // Make sure only numerical values are guessed
-        } else if (guessed_high() or guessed_low() or $correct_guess && validate_number() == false)
-        {
-            $message = "Please only enter numerical values.";
-        }
-    }
-
-    // Check if the secret number is set, the user has requested a reset or the user guessed the number correctly
-    if (number_unset() || request_reset() || $correct_guess)
-    {
-        reset_secret_number();
-        reset_guess_count();
-    }
-        
+    require('inc/functions.php'); 
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -46,30 +9,24 @@
     <link rel="stylesheet" href="style/style.css" />
 </head>
 <body>
-    <h1 id="index-header">GUESS THE NUMBER</h1>
-    <!-- Display a local message depending on the state of the game, saved in $_SESSION -->
-    <p class="user-message"><?= $message ?></p>
-
-    <!-- The form to guess the number in -->
-    <div id="form-container">
-        <form method="POST">
-            <label for="user_guess" class="user-message">YOUR GUESS</label><br>
-            <input id="user_guess" name="user_guess" class="guess-form" maxlength="3"><br><br>
-            <input type="submit" name="guess" value="Guess" class="btn-guess">
-            <input type="submit" name="reset" value="Reset" class="btn-reset">
-        </form><br>
-    </div>
-    <div id="guess-container"><h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?></h1></div>
-    <div id="settings-container">
-        <h1>SETTINGS</h1>
-        <form method="POST">
-            <label for="user_name" class="user-message">Your name</label><br>
-            <input id="user_name" name="user_name" class="settings-form" maxlength="20"><br><br>
-            <label for="user_minimum" class="user-message">Minimum number</label><br>
-            <input id="user_minimum" name="user_minimum" class="settings-form" maxlength="20"><br><br>
-            <label for="user_maximum" class="user-message">Minimum number</label><br>
-            <input id="user_maximum" name="user_maximum" class="settings-form" maxlength="20"><br><br>
-        </form>
+    <h1 id="index-header">SETTINGS</h1>   
+    <div id="settings-outer">
+        <div id="settings-container">
+            <form method="POST">
+                <label for="user_name" class="user-message">Your name</label><br>
+                <input id="user_name" name="user_name" class="settings-form" maxlength="20"><br><br>
+                <label for="user_minimum" class="user-message">Minimum number</label><br>
+                <input id="user_minimum" name="user_minimum" class="settings-form" maxlength="4"><br><br>
+                <label for="user_maximum" class="user-message">Maximum number</label><br>
+                <input id="user_maximum" name="user_maximum" class="settings-form" maxlength="4"><br><br>
+                <label for="user_tries" class="user-message">Amount of tries</label><br>
+                <input id="user_tries" name="user_tries" class="settings-form" maxlength="3"><br><br>
+                <label for="user_time" class="user-message">Time in seconds</label><br>
+                <input id="user_time" name="user_time" class="settings-form" maxlength="4"><br><br>
+                <label for="user_check" class="user-message">Display settings in the game</label><br>
+                <input id="user_check" name="user_check" class="settings-form" type="checkbox"><br><br>
+            </form>
+        </div>
     </div>
 </body>
 </html>

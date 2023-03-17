@@ -48,7 +48,7 @@ body
     color: white;
 }
 
-.btn-guess, .btn-reset
+.btn-guess, .btn-reset, .btn-quit
 {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
@@ -59,10 +59,11 @@ body
     transition: all 0.2s ease-in-out;
 }
   
-.btn-guess:hover, .btn-reset:hover
+.btn-guess:hover, .btn-reset:hover, .btn-quit:hover
 {
     color: #c2c2c2;
     box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    cursor: pointer !important;
 }
 
 .btn-guess
@@ -73,8 +74,14 @@ body
 
 .btn-reset
 {
-    background: #ef3636;
-    border-color: #ef3636;
+    background: #8336ef;
+    border-color: #8336ef;
+}
+
+.btn-quit
+{
+    background: #ff0000;
+    border-color: #ff0000;
 }
 
 #guess-container
@@ -95,10 +102,18 @@ body
 #settings-container
 {
     background-color: green;
-    width: 50%;
-    height: 45%;
+    width: 25%;
+    height: 50% !important;
     text-align: center;
-    padding: 6px;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+#settings-outer
+{
+    display: flex;
+    justify-content: center;
+    height: 55em;
 }
 
 .settings-form
