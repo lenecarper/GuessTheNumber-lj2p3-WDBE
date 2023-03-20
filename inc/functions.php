@@ -3,7 +3,7 @@
     session_start();
 
     $last_guess = user_guess();
-    $username = "";
+    $username = check_username();
 
     // Define the minimum and maximum numbers to guess between
     define("RAND_MIN", 1);
@@ -26,10 +26,16 @@
 
     // Check the selected user settings
     // Make sure to upload these to the database later [!]
-    function check_settings()
+    function check_username()
     {
-        $username = $_POST['user_name'];
-        return isset($_POST['user_name']);
+        if (isset($_POST['submit']))
+        {
+            $_SESSION['username'] = $_POST['user_name'];
+        }
+        else
+        {
+            $_SESSION['username'] = "Player";
+        }
     }
 
     // Check the user's submitted guess

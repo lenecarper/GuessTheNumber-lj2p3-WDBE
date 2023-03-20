@@ -36,7 +36,7 @@
     {
         reset_secret_number();
         reset_guess_count();
-        check_settings();
+        check_username();
     }    
 ?>
 <!DOCTYPE HTML>
@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="../style/style.css" />
 </head>
 <body>
-    <h1 id="index-header">GUESS THE NUMBER <?= $username ?></h1>
+    <h1 id="index-header">Guess the number, <?= $_SESSION['username'] ?></h1>
     <!-- Display a local message depending on the state of the game, saved in $_SESSION -->
     <p class="user-message"><?= $message ?></p>
 
