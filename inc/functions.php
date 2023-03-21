@@ -19,49 +19,29 @@
 
     function check_settings()
     {
-        if (isset($_POST['user_name']))
+        if (isset($_POST['user_name']) && $_SESSION['locked'] !== 1)
         {
             $_SESSION['username'] = $_POST['user_name'];
         }
-        else
-        {
-            $_SESSION['username'] = "Player";
-        }
 
-        if (isset($_POST['user_minimum']))
+        if (isset($_POST['user_minimum']) && is_numeric($_POST['user_minimum']))
         {
             $_SESSION['minimum'] = $_POST['user_minimum'];
         }
-        else
-        {
-            $_SESSION['minimum'] = "1";
-        }
 
-        if (isset($_POST['user_maximum']))
+        if (isset($_POST['user_maximum']) && is_numeric($_POST['user_maximum']))
         {
             $_SESSION['maximum'] = $_POST['user_maximum'];
         }
-        else
-        {
-            $_SESSION['maximum'] = "100";
-        }
 
-        if (isset($_POST['user_tries']))
+        if (isset($_POST['user_tries']) && is_numeric($_POST['user_tries']))
         {
             $_SESSION['tries'] = $_POST['user_tries'];
         }
-        else
-        {
-            $_SESSION['tries'] = "15";
-        }
 
-        if (isset($_POST['user_time']))
+        if (isset($_POST['user_time']) && is_numeric($_POST['user_time']))
         {
             $_SESSION['time'] = $_POST['user_time'];
-        }
-        else
-        {
-            $_SESSION['time'] = "120";
         }
     }
 
@@ -70,7 +50,7 @@
     {
         return isset($_POST['guess']);
     }
-    
+
     // Check if the user's guess is the same as the secret number
     function correct_guess()
     {
@@ -93,6 +73,7 @@
     function request_reset()
     {
         return isset($_POST['reset']);
+        session_destroy();
     }
 
     // Make sure all keys and conditions are set to prevent errors, otherwise return false
