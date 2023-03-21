@@ -10,6 +10,7 @@
     $maximum = $_SESSION['maximum'];
     $_SESSION['display'] = false;
     $display = $_SESSION['display'];
+    $tries = $_SESSION['tries'];
 
     // Check the selected user settings
     // Make sure to upload these to the database later [!]
@@ -62,7 +63,15 @@
     // Check the user's submitted guess
     function guess_submitted()
     {
-        return isset($_POST['guess']);
+        if ($_SESSION['tries'] > 0)
+        {
+            return isset($_POST['guess']);
+            $_SESSION['tries'] - 1;
+        }
+        else
+        {
+            $message = "Ran out of tries";
+        }
     }
 
     // Check if the user's guess is the same as the secret number
@@ -87,7 +96,6 @@
     function request_reset()
     {
         return isset($_POST['reset']);
-        session_destroy();
     }
 
     // Make sure all keys and conditions are set to prevent errors, otherwise return false
