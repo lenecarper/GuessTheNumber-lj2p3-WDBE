@@ -2,39 +2,66 @@
     // Start a PHP session to store local variables
     session_start();
 
+    initial();
+
     $last_guess = user_guess();
-    $username = check_username();
-
-    // Define the minimum and maximum numbers to guess between
-    define("RAND_MIN", 1);
-    define("RAND_MAX", 100);
-
-
-    // // Check whether the guessed number is a numeric value
-    // function valid_last_guess()
-    // {
-    //     if (is_numeric($last_guess))
-    //     {
-    //         $last_guess = 
-    //     }
-    // }
-    //
-    // function active_timer()
-    // {
-    //
-    // }
+    $username = $_SESSION['username'];
+    $minimum = $_SESSION['minimum'];
+    $maximum = $_SESSION['maximum'];
 
     // Check the selected user settings
     // Make sure to upload these to the database later [!]
-    function check_username()
+
+    function initial()
     {
-        if (isset($_POST['submit']))
+        check_settings();
+    }
+
+    function check_settings()
+    {
+        if (isset($_POST['user_name']))
         {
             $_SESSION['username'] = $_POST['user_name'];
         }
         else
         {
             $_SESSION['username'] = "Player";
+        }
+
+        if (isset($_POST['user_minimum']))
+        {
+            $_SESSION['minimum'] = $_POST['user_minimum'];
+        }
+        else
+        {
+            $_SESSION['minimum'] = "1";
+        }
+
+        if (isset($_POST['user_maximum']))
+        {
+            $_SESSION['maximum'] = $_POST['user_maximum'];
+        }
+        else
+        {
+            $_SESSION['maximum'] = "100";
+        }
+
+        if (isset($_POST['user_tries']))
+        {
+            $_SESSION['tries'] = $_POST['user_tries'];
+        }
+        else
+        {
+            $_SESSION['tries'] = "15";
+        }
+
+        if (isset($_POST['user_time']))
+        {
+            $_SESSION['time'] = $_POST['user_time'];
+        }
+        else
+        {
+            $_SESSION['time'] = "120";
         }
     }
 
@@ -99,9 +126,10 @@
     // Create a random number between the set MIN/MAX values
     function reset_secret_number()
     {
-        $_SESSION['secret_number'] = rand(RAND_MIN, RAND_MAX);
+        global $minimum, $maximum;
+        $_SESSION['secret_number'] = rand($minimum, $maximum);
     }
-    
+
     // Reset the user's guess count to 0
     function reset_guess_count()
     {

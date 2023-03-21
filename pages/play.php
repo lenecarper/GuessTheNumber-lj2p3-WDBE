@@ -4,7 +4,7 @@
 
     // Set a local variable to display a message when the page loads
     // In this case it's an explanation which displays the MIN/MAX guess values
-    $message = "Guess a number between " . RAND_MIN . " and " . RAND_MAX . ". I will tell you whether your guess was too high, too low or correct.";
+    $message = "Guess a number between " . $minimum . " and " . $maximum . ". I will tell you whether your guess was too high, too low or correct.";
 
     // Store the secret number in a variable which is created when the page loads
     $correct_guess = correct_guess();
@@ -36,7 +36,7 @@
     {
         reset_secret_number();
         reset_guess_count();
-        check_username();
+        check_settings();
     }    
 ?>
 <!DOCTYPE HTML>
