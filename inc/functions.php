@@ -8,6 +8,8 @@
     $username = $_SESSION['username'];
     $minimum = $_SESSION['minimum'];
     $maximum = $_SESSION['maximum'];
+    $_SESSION['display'] = false;
+    $display = $_SESSION['display'];
 
     // Check the selected user settings
     // Make sure to upload these to the database later [!]
@@ -43,6 +45,18 @@
         {
             $_SESSION['time'] = $_POST['user_time'];
         }
+
+        if (isset($_POST['user_check']))
+        {
+            $_SESSION['sessionInfo'] = true;
+        }
+    }
+
+    function check_display($display)
+    {
+        echo "<pre>";
+        var_dump($display);
+        echo "</pre>";
     }
 
     // Check the user's submitted guess
@@ -62,7 +76,7 @@
     {
         return user_guess() > secret_number();
     }
-    
+
     // Check if the user guessed too low
     function guessed_low()
     {

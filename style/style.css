@@ -114,7 +114,7 @@ body
 {
     display: flex;
     justify-content: center;
-    height: 67.5em;
+    height: 65em;
 }
 
 .settings-form
@@ -125,4 +125,10 @@ body
     border-color: rgb(79, 45, 79);
     color: white;
     border-radius: 3.5px;
+}
+
+input.user-check
+{
+    transform: scale(1.75);
+    margin-top: 15px;
 }

@@ -60,6 +60,10 @@
             <a href="../index.php"><input type="button" name="quit" value="Quit" class="btn-quit" /></a>
         </form><br>
     </div>
+    <?php if($_SESSION['sessionInfo'] == true)
+    {
+        check_display($_SESSION);
+    } ?>
     <div id="guess-container"><h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?></h1></div>
 </body>
 </html>
