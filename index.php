@@ -13,7 +13,7 @@
     <div id="settings-outer">
         <div id="settings-container">
             <form method="POST" action="pages/play.php">
-                <h1 style="font-size: 16px; color: red; padding-bottom: 5px;">Lege velden krijgen een eigen waarde toegeschreven.<?= $_SESSION['username'] ?></h1>
+                <h1 style="font-size: 16px; color: red; padding-bottom: 5px;">Lege velden krijgen een eigen waarde toegeschreven.</h1>
                 <label for="user_name" class="user-message">Your name</label><br>
                 <input id="user_name" name="user_name" class="settings-form" maxlength="20"><br><br>
                 <label for="user_minimum" class="user-message">Minimum number</label><br>

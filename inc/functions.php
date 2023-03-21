@@ -126,8 +126,7 @@
     // Create a random number between the set MIN/MAX values
     function reset_secret_number()
     {
-        global $minimum, $maximum;
-        $_SESSION['secret_number'] = rand($minimum, $maximum);
+        $_SESSION['secret_number'] = rand($_SESSION['minimum'], $_SESSION['maximum']);
     }
 
     // Reset the user's guess count to 0
@@ -135,7 +134,7 @@
     {
         $_SESSION['guess_count'] = 0;
     }
-    
+
     // Increment the user's guess count after each confirmed guess
     function increment_guess_count()
     {
