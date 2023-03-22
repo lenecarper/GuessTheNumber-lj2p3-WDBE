@@ -65,14 +65,14 @@
     // Check the user's submitted guess
     function guess_submitted()
     {
-        if ($_SESSION['tries'] > 0)
+        if (isset($_POST['guess']) && $_SESSION['tries'] > 0)
         {
-            return isset($_POST['guess']);
             $_SESSION['tries']--;
+
         }
-        else
+        else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)
         {
-            echo ("Ran out of tries");
+            $_SESSION['tries'] = 0;
         }
     }
 
