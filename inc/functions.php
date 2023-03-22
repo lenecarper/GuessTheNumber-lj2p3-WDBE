@@ -65,14 +65,15 @@
     // Check the user's submitted guess
     function guess_submitted()
     {
-        if (isset($_POST['guess']) && $_SESSION['tries'] > 0)
+        if (isset($_POST['guess']) && $_SESSION['tries'] > 0 && $_POST['guess'] != null)
         {
             $_SESSION['tries']--;
-
+            header("Refresh:0");
         }
         else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)
         {
             $_SESSION['tries'] = 0;
+            $message = "Out of tries!";
         }
     }
 

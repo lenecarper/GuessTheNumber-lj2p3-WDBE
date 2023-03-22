@@ -5,7 +5,7 @@
     // Set a local variable to display a message when the page loads
     // In this case it's an explanation which displays the MIN/MAX guess values
     $instruction = "Guess a number between " . $minimum . " and " . $maximum . ". I will tell you whether your guess was too high, too low or correct.";
-    $message = "";
+    $message = "Enter a number below to guess";
 
     // Store the secret number in a variable which is created when the page loads
     $correct_guess = correct_guess();
@@ -19,16 +19,20 @@
         if ($correct_guess && validate_number() == true)
         {
             $message = "You got it! It took you " . guess_count() . " attempts. Your score has been uploaded to the leaderboards.";
-        } else if (guessed_low() && validate_number() == true && $_SESSION['tries'] > 0)
+        } else if (guessed_low() && validate_number() == true)
         {
             $message = "Sorry, guess again but higher.";
-        } else if (guessed_high() && validate_number() == true && $_SESSION['tries'] > 0)
+        } else if (guessed_high() && validate_number() == true)
         {
             $message = "Sorry, guess again but lower.";
         // Make sure only numerical values are guessed
-        } else if (guessed_high() or guessed_low() or $correct_guess && validate_number() == false && $_SESSION['tries'] > 0)
+        } else if (guessed_high() or guessed_low() or $correct_guess && validate_number() == false)
         {
             $message = "Please only enter numerical values.";
+        }
+        else if ($_SESSION['tries'] == 0)
+        {
+            $message = "Out of tries.";
         }
     }
 
