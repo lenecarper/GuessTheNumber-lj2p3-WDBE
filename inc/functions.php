@@ -2,7 +2,7 @@
     // Start a PHP session to store local variables
     session_start();
 
-    initial();
+    init();
 
     $last_guess = user_guess();
     $username = $_SESSION['username'];
@@ -11,13 +11,15 @@
     $_SESSION['display'] = false;
     $display = $_SESSION['display'];
     $tries = $_SESSION['tries'];
+    $message = "";
 
     // Check the selected user settings
     // Make sure to upload these to the database later [!]
 
-    function initial()
+    function init()
     {
         check_settings();
+        quit_game();
     }
 
     function check_settings()
@@ -56,7 +58,7 @@
     function check_display($display)
     {
         echo "<pre>";
-        var_dump($display);
+        var_dump($display, true);
         echo "</pre>";
     }
 
@@ -66,11 +68,11 @@
         if ($_SESSION['tries'] > 0)
         {
             return isset($_POST['guess']);
-            $_SESSION['tries'] - 1;
+            $_SESSION['tries']--;
         }
         else
         {
-            $message = "Ran out of tries";
+            echo ("Ran out of tries");
         }
     }
 
@@ -169,6 +171,19 @@
 
     function quit_game()
     {
-        return isset($_POST['quit']);
+        if (isset($_POST['quit']))
+        {
+            header("location:../index.php");
+            session_destroy();
+
+            if (isset($_SESSION))
+            {
+                init();
+            }
+            else
+            {
+                session_start();
+            }
+        }
     }
 ?>

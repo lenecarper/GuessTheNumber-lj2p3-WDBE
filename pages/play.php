@@ -57,12 +57,16 @@
             <input id="user_guess" name="user_guess" class="guess-form" maxlength="3"><br><br>
             <input type="submit" name="guess" value="Guess" class="btn-guess" />
             <input type="submit" name="reset" value="Reset" class="btn-reset" />
-            <a href="../index.php"><input type="button" name="quit" value="Quit" class="btn-quit" /></a>
+            <input type="submit" name="quit" value="Quit" class="btn-quit" />
         </form><br>
     </div>
     <?php if($_SESSION['sessionInfo'] == true)
     {
         check_display($_SESSION);
+        // $_SESSION['sessionInfo'] = false;
+    }
+    else
+    {
         $_SESSION['sessionInfo'] = false;
     } ?>
     <div id="guess-container"><h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?><br>Tries: <?= $tries ?></h1></div>

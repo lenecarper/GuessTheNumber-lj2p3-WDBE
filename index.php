@@ -25,7 +25,7 @@
                 <input id="user_time" name="user_time" class="settings-form" maxlength="4" type="number" required><br><br>
                 <label for="user_check" class="user-message">Display settings in the game</label><br>
                 <input id="user_check" name="user_check" class="user-check" type="checkbox"><br><br>
-                <a href="pages/play.php"><input id="user_submit" name="user_submit" class="btn-reset" type="submit" value="Opslaan"></a>
+                <input id="user_submit" name="user_submit" class="btn-reset" type="submit" value="Opslaan">
             </form>
         </div>
     </div>
