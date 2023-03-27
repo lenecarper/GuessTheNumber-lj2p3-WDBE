@@ -7,9 +7,10 @@
 <head>
     <title>Guess The Number</title>
     <link rel="stylesheet" href="style/style.css" />
+    <script src="inc/main.js" /></script>
 </head>
 <body>
-    <h1 id="index-header">SETTINGS</h1>   
+    <br><br><h1 id="index-header">SETTINGS</h1>   
     <div id="settings-outer">
         <div id="settings-container">
             <form method="POST" action="pages/play.php">

@@ -8,6 +8,7 @@
     $maximum = $_SESSION['maximum'];
     $tries = $_SESSION['tries'];
     $instruction = "Guess a number between " . $minimum . " and " . $maximum . ". I will tell you whether your guess was too high, too low or correct.";
+    $message = "Enter a guess";
 
     // Store the secret number in a variable which is created when the page loads
     $correct_guess = correct_guess();
@@ -16,7 +17,6 @@
     if (guess_submitted())
     {
         increment_guess_count();
-        $message = "Enter a number below to guess";
 
         // Display different messages to the user after guessing depending on their answer
         if ($correct_guess && validate_number() == true)
@@ -51,12 +51,15 @@
 <html>
 <head>
     <title>Guess The Number</title>
+    <!-- Load stylesheet and countdown script -->
     <link rel="stylesheet" href="../style/style.css" />
+    <!-- <script src="../inc/time.js"></script> -->
 </head>
 <body>
     <h1 id="index-header">Guess the number, <?= $_SESSION['username'] ?></h1>
     <!-- Display a local message depending on the state of the game, saved in $_SESSION -->
     <p class="user-message"><?= $instruction ?></p><br>
+    <!-- <p id="countdown-time"></p> -->
     <p class="user-message"><?= $message ?></p>
 
     <!-- The form to guess the number in -->
@@ -69,13 +72,17 @@
             <input type="submit" name="quit" value="Quit" class="btn-quit" />
         </form><br>
     </div>
-    <?php if($_SESSION['sessionInfo'] == true)
+    <?php
+    if (isset($_SESSION['sessionInfo']))
     {
-        check_display($_SESSION);
-    }
-    else
-    {
-        $_SESSION['sessionInfo'] = false;
+        if($_SESSION['sessionInfo'] == true)
+        {
+            check_display($_SESSION);
+        }
+        else
+        {
+            $_SESSION['sessionInfo'] = false;
+        }
     } ?>
     <div id="guess-container"><h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?><br>Tries: <?= $tries ?></h1></div>
 </body>
