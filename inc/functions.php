@@ -5,12 +5,12 @@
     init();
 
     $last_guess = user_guess();
-    $username = $_SESSION['username'];
-    $minimum = $_SESSION['minimum'];
-    $maximum = $_SESSION['maximum'];
+    // $username = $_SESSION['username'];
+    // $minimum = $_SESSION['minimum'];
+    // $maximum = $_SESSION['maximum'];
+    // $tries = $_SESSION['tries'];
     $_SESSION['display'] = false;
     $display = $_SESSION['display'];
-    $tries = $_SESSION['tries'];
     $message = "";
 
     // Check the selected user settings
@@ -24,6 +24,7 @@
 
     function check_settings()
     {
+        $_SESSION['locked'] = 0;
         if (isset($_POST['user_name']) && $_SESSION['locked'] !== 1)
         {
             $_SESSION['username'] = $_POST['user_name'];

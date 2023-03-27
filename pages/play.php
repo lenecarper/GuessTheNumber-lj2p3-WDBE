@@ -4,8 +4,10 @@
 
     // Set a local variable to display a message when the page loads
     // In this case it's an explanation which displays the MIN/MAX guess values
+    $minimum = $_SESSION['minimum'];
+    $maximum = $_SESSION['maximum'];
+    $tries = $_SESSION['tries'];
     $instruction = "Guess a number between " . $minimum . " and " . $maximum . ". I will tell you whether your guess was too high, too low or correct.";
-    $message = "Enter a number below to guess";
 
     // Store the secret number in a variable which is created when the page loads
     $correct_guess = correct_guess();
@@ -14,6 +16,7 @@
     if (guess_submitted())
     {
         increment_guess_count();
+        $message = "Enter a number below to guess";
 
         // Display different messages to the user after guessing depending on their answer
         if ($correct_guess && validate_number() == true)
