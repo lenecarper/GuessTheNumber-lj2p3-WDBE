@@ -179,6 +179,17 @@ input.user-check
     font-size: 1em;
 }
 
+/* LEADERBOARD STYLING */
+
+#leaderboard-container
+{
+    margin: auto;
+}
+
+.leaderboard-list
+{
+
+}
 
 /* INDEX STYLING */
 
