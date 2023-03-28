@@ -23,6 +23,8 @@
         if ($correct_guess && validate_number() == true)
         {
             $_SESSION['message'] = "You got it! It took you " . guess_count() . " attempts. Your score has been uploaded to the leaderboards.";
+            $_SESSION['winner'] = true;
+            uploadScore();
         } else if (guessed_low() && validate_number() == true)
         {
             $_SESSION['message'] = "Sorry, guess again but higher.";
@@ -66,7 +68,7 @@
     <div id="form-container">
         <form method="POST">
             <label for="user_guess" class="user-message">YOUR GUESS</label><br>
-            <input id="user_guess" name="user_guess" class="guess-form" maxlength="3"><br><br>
+            <input id="user_guess" name="user_guess" class="guess-form" maxlength="4"><br><br>
             <input type="submit" name="guess" value="Guess" class="btn-guess" <?php if ($_SESSION['tries'] == 0) { ?> disabled <?php } ?>/>
             <input type="submit" name="reset" value="Reset" class="btn-reset" />
             <input type="submit" name="quit" value="Quit" class="btn-quit" />

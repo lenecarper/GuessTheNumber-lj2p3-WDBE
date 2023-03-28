@@ -9,6 +9,7 @@
     $_SESSION['display'] = false;
     $display = $_SESSION['display'];
     $message = "";
+    $_SESSION['winner'] = false;
     $errors = array();
 
     // Check the selected user settings
@@ -81,7 +82,7 @@
     {
         return user_guess() == secret_number();
     }
-    
+
     // Check if the user guessed too high
     function guessed_high()
     {
@@ -220,7 +221,7 @@
 
             global $errors;
             # Gather all the data into an SQL query
-            if (user_guess() == secret_number())
+            if ($_SESSION['winner'] == true)
             {
                 $upload = "INSERT into highscores (`username`, `minimum`, `maximum`, `tries`, `time`) VALUES ('$username' , $minimum, $maximum, $tries, $time)";
                 # Query the data to be sent into the corresponding database tables
