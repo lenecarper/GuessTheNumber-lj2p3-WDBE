@@ -1,7 +1,6 @@
 <?php
     // Require the functions file to import external functions
     require('../inc/functions.php');
-
     // Set a local variable to display a message when the page loads
     // In this case it's an explanation which displays the MIN/MAX guess values
     $minimum = $_SESSION['minimum'];
@@ -86,6 +85,11 @@
             $_SESSION['sessionInfo'] = false;
         }
     } ?>
-    <div id="guess-container"><h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?><br>Tries: <?= $tries ?></h1></div>
+    <div id="guess-container">
+        <h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?><br>Tries: <?= $tries ?></h1>
+        <div id="leaderboard-container">
+            <?php getScore(); ?>
+        </div>
+    </div>
 </body>
 </html>
