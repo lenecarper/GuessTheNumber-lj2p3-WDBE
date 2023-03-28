@@ -10,7 +10,7 @@
     <script src="inc/main.js" /></script>
 </head>
 <body>
-    <br><br><h1 id="index-header">SETTINGS</h1>   
+    <!-- <br><br><h1 id="index-header">SETTINGS</h1>   
     <div id="settings-outer">
         <div id="settings-container">
             <form method="POST" action="pages/play.php">
@@ -29,6 +29,56 @@
                 <input id="user_submit" name="user_submit" class="btn-reset" type="submit" value="Opslaan">
             </form>
         </div>
+    </div> -->
+    <div class="flex row w-100 ml-2" style="max-width: 800px;">
+  <div class="column w-65 p-1">
+    <h2 class="play-once">PLAYER SETTINGS (REQUIRED)</h2>
+    <div class="row w-100">
+      <div class="field w-59">
+        <label class="glow text">Name</label>
+        <input type="text" pattern="\w+" />
+      </div>
     </div>
+    <div class="flex row w-100 justify-space-between flex-wrap">
+      <div class="field w-24">
+        <label class="glow text">Height</label>
+        <input />
+      </div>
+      <div class="field w-24" data-unit="Lbs">
+        <label class="glow text">Weight</label>
+        <input type="number" />
+      </div>
+      <div class="field w-24">
+        <label class="glow text">Sex</label>
+        <input />
+      </div>
+    </div>
+    <h2>GAME SETTINGS (REQUIRED)</h2>
+    <div class="yellow mb-1">
+      <div class="flex row w-100 justify-space-between">
+        <div class="field w-24">
+            <label class="glow text">test</label>
+            <input type="number" />
+        </div>
+        <div class="field w-24">
+            <label class="glow text">Max Number</label>
+            <input type="number" />
+        </div>
+        <div class="field w-24">
+            <label class="glow text">Min Number</label>
+            <input type="number" />
+        </div>
+        <div class="field w-24">
+            <label class="glow text">Tries</label>
+            <input type="number" />
+        </div>
+    </div>
+    <h2></h2>
+    <div class="flex row mt-1">
+      <button class="green">CONFIRM</button>
+      <button class="red">CLEAR</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
