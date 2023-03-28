@@ -5,10 +5,6 @@
     init();
 
     $last_guess = user_guess();
-    // $username = $_SESSION['username'];
-    // $minimum = $_SESSION['minimum'];
-    // $maximum = $_SESSION['maximum'];
-    // $tries = $_SESSION['tries'];
     $_SESSION['display'] = false;
     $display = $_SESSION['display'];
     $message = "";
@@ -74,7 +70,7 @@
         else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)
         {
             $_SESSION['tries'] = 0;
-            $message = "Out of tries!";
+            $_SESSION['message'] = "Out of tries!";
         }
     }
 

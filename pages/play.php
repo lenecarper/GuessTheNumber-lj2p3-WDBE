@@ -8,7 +8,8 @@
     $maximum = $_SESSION['maximum'];
     $tries = $_SESSION['tries'];
     $instruction = "Guess a number between " . $minimum . " and " . $maximum . ". I will tell you whether your guess was too high, too low or correct.";
-    $message = "Enter a guess";
+    $_SESSION['message'] = "Enter a number below";
+    $message = $_SESSION['message'];
 
     // Store the secret number in a variable which is created when the page loads
     $correct_guess = correct_guess();
@@ -21,21 +22,21 @@
         // Display different messages to the user after guessing depending on their answer
         if ($correct_guess && validate_number() == true)
         {
-            $message = "You got it! It took you " . guess_count() . " attempts. Your score has been uploaded to the leaderboards.";
+            $_SESSION['message'] = "You got it! It took you " . guess_count() . " attempts. Your score has been uploaded to the leaderboards.";
         } else if (guessed_low() && validate_number() == true)
         {
-            $message = "Sorry, guess again but higher.";
+            $_SESSION['message'] = "Sorry, guess again but higher.";
         } else if (guessed_high() && validate_number() == true)
         {
-            $message = "Sorry, guess again but lower.";
+            $_SESSION['message'] = "Sorry, guess again but lower.";
         // Make sure only numerical values are guessed
         } else if (guessed_high() or guessed_low() or $correct_guess && validate_number() == false)
         {
-            $message = "Please only enter numerical values.";
+            $_SESSION['message'] = "Please only enter numerical values.";
         }
         else if ($_SESSION['tries'] == 0)
         {
-            $message = "Out of tries.";
+            $_SESSION['message'] = "Out of tries.";
         }
     }
 
@@ -53,14 +54,13 @@
     <title>Guess The Number</title>
     <!-- Load stylesheet and countdown script -->
     <link rel="stylesheet" href="../style/style.css" />
-    <!-- <script src="../inc/time.js"></script> -->
 </head>
 <body>
     <h1 id="index-header">Guess the number, <?= $_SESSION['username'] ?></h1>
     <!-- Display a local message depending on the state of the game, saved in $_SESSION -->
     <p class="user-message"><?= $instruction ?></p><br>
     <!-- <p id="countdown-time"></p> -->
-    <p class="user-message"><?= $message ?></p>
+    <p class="user-message"><?= $_SESSION['message'] ?></p>
 
     <!-- The form to guess the number in -->
     <div id="form-container">

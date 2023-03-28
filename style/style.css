@@ -42,7 +42,7 @@ body
 .guess-form
 {
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.2em;
     background: #131516;
     border-color: rgb(79, 45, 79);
     color: white;
@@ -120,7 +120,7 @@ body
 .settings-form
 {
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.2em;
     background: #131516;
     border-color: rgb(79, 45, 79);
     color: white;
@@ -131,6 +131,53 @@ input.user-check
 {
     transform: scale(1.75);
     margin-top: 15px;
+}
+
+#user_submit
+{
+    text-transform: uppercase;
+    font-weight: bold;
+    border-left: 2px solid var(--light-color);
+}
+
+#user_submit:hover
+{
+    animation: 0.8s ease-out infinite alternate glowing;
+    background: var(--color);
+    transform: scale(1) rotateZ(var(--skew));
+    transition: transform 0.05s ease, opacity 0.15s ease;
+    opacity: 1;
+    cursor: pointer;
+}
+
+#user_submit:active
+{
+    background-color: var(--dark-color);
+    transition-duration: 0.1s;
+    color: #ddd;
+    transform: scale(0.95); 
+}
+
+#user_check
+{
+    margin: 10px;
+    height: 1.25em;
+    width: 1.25em
+}
+
+#user_check:checked
+{
+    background-color: rgb(0, 255, 68) !important;
+    opacity: 1;
+}
+
+#settings-form
+{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
 }
 
 
@@ -1632,6 +1679,7 @@ h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty {
     display: inline-flex;
     flex-direction: column;
     position: relative;
+    margin: 2px;
 }
 .field label {
     opacity: 0.5;
@@ -1684,7 +1732,7 @@ input:focus, select:focus {
     border-color: var(--color);
     opacity: 1;
 }
-input:invalid, select:invalid, input.error, select.error {
+/* input:invalid, select:invalid, input.error, select.error {
     background-color: rgba(255, 45, 110, 0.21);
     background-image: repeating-linear-gradient(30deg, rgba(255, 255, 255, 0.21), rgba(255, 255, 255, 0.21) 20px, rgba(255, 45, 110, 0.21) 20px, rgba(255, 45, 110, 0.21) 40px, rgba(255, 255, 255, 0.21) 40px);
     background-repeat: repeat;
@@ -1693,7 +1741,7 @@ input:invalid, select:invalid, input.error, select.error {
     box-shadow: 0px 0px 7px 1px #ff2c6d;
     opacity: 1;
     animation: scroll-background 4s infinite linear;
-}
+} */
 select {
     background-image: url(data:image/png;
    base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABRCAYAAACJ1BvjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAXvSURBVHgB7ZxbUhtHFIZPj+YtdkWwAlEFTvIGbCBYC4iNY5zkicsGcNgAIguIlQ1E4ilViArOBiy8AvGWKkQKVgBTAT/p0j5nNCOk0UjT3dPdI4O+Ktdg5qLWx6h1/u6WADImf3lSmGvW6rSFjGGQISggzzrtBnAoYEsu+e3dqrey7UFGOJARvoh2u+6LIDgssCdPPuQblTxkRGYynFbrHW6WI79ecZ4+/R0yIhMZ883aO87YVtw+zvk27s9EiHUZ+WZtnwO8nXQM7Uch+2AZqx0oicAHLAkezvHYg+uljQOwhDUZ+f+Od1mXl0EOzjudPe/bn2XPU8KKjPzF8SbjvApqcOxftr3F14dgGOMy8udHy4yxBqTjBjvWovfszRkYxGgHSlUliqhDeubwOh9ILBjEmAxfRKdNInQVUXPMYX+bLNuNvEz6IsLqUidUtufcorewfgWa0X5nGBVBUNneaRsp27XKCPLGiTERIYZyjFYZrNOpwGjeMMUKe/LVn6ARbTIob2BF8BKswtbnL461CdEiQyRvmALrjy1dOSb1u4lk3jCFlhyTSsaUiAhJnWOUZaTMG4N4mD1OWbe7DIwVIB2pcoxSn+HnjfQiPOxnDvjd3QI2fp1/+rRCAzv4dK5AHYbtqqiW7dJ3RhC81MtsfLI855Th/9vDuMFfvD5ttrBh+ynuFKVgJyUjZXV5hrdwWfQWTi1FoWwXlqEqAl8Kp7g58JY2TkGBVFIkhQjJUBGRVsJIG5o12qzhP3oHWxM+UWI+JlFGf35DsMzWLWGkPaEULLaw79oUPK2BHXUxSUiijLmL4xORMtu0hCj5f/+iTQFyuZKglPrN0kZx0gETZcyfH1XGzW+E4P4qtFoH3ne/XEEGyEjB/ZXrxdc7Y/ePfZDJ1SXVCH/A3V05y7nRQQSlTCzbY2VMEDF1EqIMSQH4PuYdaKyQERljREy9hCh9Ka67hVXpZkRKbI4ZkhGTN744CXGMqVVGckxfBt4Ra/ifenDYFXecEtze/vMlS4gSI4XjH7sYvgOy4CA/b+COMzyoamP2KksiUr4Ocwzz5yFarZIvwVKNMC2EUsBxfsAOd486mgI8cqiznXmYMWPGjBkztMOoDIduN+9989N7eIQMDCcG5fjFcZkBf8GBlR56KR4SSqCSHMPp2fWzN7/2gxqOalU5DYowuHrIUvq5xGH7NMBNKR1FbNMv71NrdOD3AUnB5+ZvnHZ7F0d2tgZG+YcGilnkpDxrtRpDAyGBFAwyH02sozLJkITekon7WUDOL3FKc2gKYXSkCwMLy+XqI8NlKIVxqHZd93DapUyUQJCITqcYHcSOHwMdJyQ8CeN+N5c7mDYpiRKIMSKI8aPjJMR1GzBhgnlapAQSCk6r9Zb3RsbHtfmGt9ur46Y1Js6biM64ZyUlfHt0cHaNJ08kJc7MJ08vnh/RNF4FBLAlZbBGALF5V8673VdJhaXYxLOEkIBTbmCqUUECQYO+e9iWxOVN4ksSmrVS0AgZTrmGAWZFCT7BhFFJ8FipRqkIUS7gMCbQ5iVWibsgKaH3sOIiguPl8HNMr3HyCEqJlsyg9FByIoJz5OnnGFVipAjVCKKXH8gbcs1SZK5Zoxok3Tpxqmq7vNwF+Ogw9iKthIDGzdLGKijggiLcdZ/LrOiJvwgUaNEb83/UQC9vFEER5bXjWEt4WM2tp1y3qY+wzE4xN6z8MglJyjFWmJA3ZEgtgxDJMcbQJILQ8hELagjW/c/pR7DLDfY1r3StJ9P24RsKQLT4A+xBeWNH52ddtX4sC+uG9/5iePNwzpwd3SP62j+9iH+pKoU0MAh2dL95iz9WQTNaOtA4lHNMAipltsS1zZEqx8RgUkRwfbOkzjEBqnlD6jHAAviSqTOFCD6Act6Qwc7XzLjuOtBKQjX8iR6wgJU7g1Aq2zVWlyJYk0FICbEsgrAqgxASkoEIwroMImE+xspXysSRiQxiaK36PUNruW2T2dfZ0ROO5Jhe3nhkS7aHoLIdx1P5PG5hRu8lA1PAZ6fTgKSO2ey1AAAAAElFTkSuQmCC);
