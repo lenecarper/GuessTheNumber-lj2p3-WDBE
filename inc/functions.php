@@ -19,6 +19,7 @@
     {
         check_settings();
         quit_game();
+        $_SESSION['winner'] = false;
     }
 
     function check_settings()
@@ -68,6 +69,7 @@
         if (isset($_POST['guess']) && $_SESSION['tries'] > 0 && $_POST['guess'] != null)
         {
             $_SESSION['tries']--;
+            uploadScore();
             header("Refresh:0");
         }
         else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)
@@ -213,20 +215,20 @@
         {            
             # Define variables
             $db = db();
-            $username = mysqli_real_escape_string($db, $_SESSION['user_name']);
-            $minimum = mysqli_real_escape_string($db, $_SESSION['user_minimum']);
-            $maximum = mysqli_real_escape_string($db, $_SESSION['user_maximum']);
-            $tries = mysqli_real_escape_string($db, $_SESSION['user_tries']);
-            $time = mysqli_real_escape_string($db, $_SESSION['user_time']);
+            $username = $_SESSION['user_name'];
+            $minimum = $_SESSION['user_minimum'];
+            $maximum = $_SESSION['user_maximum'];
+            $tries = $_SESSION['user_tries'];
+            $time = $_SESSION['user_time'];
 
             global $errors;
             # Gather all the data into an SQL query
-            if ($_SESSION['winner'] == true)
+            if (isset($_POST['guess']))
             {
-                $upload = "INSERT into highscores (`username`, `minimum`, `maximum`, `tries`, `time`) VALUES ('$username' , $minimum, $maximum, $tries, $time)";
+                $upload = "INSERT into highscores (`username`, `minimum`, `maximum`, `tries`, `time`) VALUES ('$username', '$minimum', '$maximum', '$tries', '$time')";
                 # Query the data to be sent into the corresponding database tables
                 $query = $db->query($upload) or die($db->error);
-                header("location:index.php");
+                header("location:play.php");
             } else
             {
                 array_push($errors, "An error has occured, please try again.");

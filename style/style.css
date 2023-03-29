@@ -164,6 +164,12 @@ input.user-check
     width: 1.25em
 }
 
+#user_check:hover
+{
+    background-color: rgb(0, 255, 68) !important;
+    opacity: 1;
+}
+
 #user_check:checked
 {
     background-color: rgb(0, 255, 68) !important;
