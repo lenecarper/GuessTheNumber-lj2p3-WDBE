@@ -215,25 +215,25 @@
         {            
             # Define variables
             $db = db();
-            $username = $_SESSION['user_name'];
-            $minimum = $_SESSION['user_minimum'];
-            $maximum = $_SESSION['user_maximum'];
-            $tries = $_SESSION['user_tries'];
-            $time = $_SESSION['user_time'];
+            $username = $_SESSION['username'];
+            $minimum = $_SESSION['minimum'];
+            $maximum = $_SESSION['maximum'];
+            $tries = $_SESSION['tries'];
+            $time = $_SESSION['time'];
 
             global $errors;
             # Gather all the data into an SQL query
-            if (isset($_POST['guess']))
-            {
+            // if ($_SESSION['winner'] == true)
+            // {
                 $upload = "INSERT into highscores (`username`, `minimum`, `maximum`, `tries`, `time`) VALUES ('$username', '$minimum', '$maximum', '$tries', '$time')";
                 # Query the data to be sent into the corresponding database tables
                 $query = $db->query($upload) or die($db->error);
                 header("location:play.php");
-            } else
-            {
-                array_push($errors, "An error has occured, please try again.");
-                echo $errors;
-            }
+            // } else
+            // {
+            //     array_push($errors, "An error has occured, please try again.");
+            //     echo $errors;
+            // }
         }
     }
 
