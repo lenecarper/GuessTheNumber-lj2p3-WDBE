@@ -69,7 +69,6 @@
         if (isset($_POST['guess']) && $_SESSION['tries'] > 0 && $_POST['guess'] != null)
         {
             $_SESSION['tries']--;
-            uploadScore();
             header("Refresh:0");
         }
         else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)

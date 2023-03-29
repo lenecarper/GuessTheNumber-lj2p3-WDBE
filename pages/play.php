@@ -22,9 +22,7 @@
         if ($correct_guess && validate_number() == true)
         {
             $_SESSION['message'] = "You got it! It took you " . guess_count() . " attempts. Your score has been uploaded to the leaderboards.";
-            $_SESSION['winner'] = true;
             uploadScore();
-            $_SESSION['winner'] = false;
         } else if (guessed_low() && validate_number() == true)
         {
             $_SESSION['message'] = "Sorry, guess again but higher.";
