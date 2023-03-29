@@ -71,6 +71,12 @@
             $_SESSION['tries']--;
             header("Refresh:0");
         }
+        // else if (isset($_POST['guess']) && $_SESSION['tries'] > 0 && $_POST['guess'] != null && $_SESSION['winner'] == true)
+        // {
+        //     $_SESSION['tries']--;
+        //     uploadScore();
+        //     header("Refresh:0");
+        // }
         else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)
         {
             $_SESSION['tries'] = 0;
@@ -222,17 +228,17 @@
 
             global $errors;
             # Gather all the data into an SQL query
-            // if ($_SESSION['winner'] == true)
-            // {
+            if ($_SESSION['winner'] == true)
+            {
                 $upload = "INSERT into highscores (`username`, `minimum`, `maximum`, `tries`, `time`) VALUES ('$username', '$minimum', '$maximum', '$tries', '$time')";
                 # Query the data to be sent into the corresponding database tables
                 $query = $db->query($upload) or die($db->error);
                 header("location:play.php");
-            // } else
-            // {
-            //     array_push($errors, "An error has occured, please try again.");
-            //     echo $errors;
-            // }
+            } else
+            {
+                array_push($errors, "An error has occured, please try again.");
+                echo $errors;
+            }
         }
     }
 

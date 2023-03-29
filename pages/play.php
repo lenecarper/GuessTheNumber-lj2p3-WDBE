@@ -22,15 +22,23 @@
         if ($correct_guess && validate_number() == true)
         {
             $_SESSION['message'] = "You got it! It took you " . guess_count() . " attempts. Your score has been uploaded to the leaderboards.";
+            $_SESSION['winner'] = true;
+        }
+        else if (isset($_POST['guess']) && $_SESSION['winner'] == true)
+        {
             uploadScore();
-        } else if (guessed_low() && validate_number() == true)
+            $_SESSION['winner'] = false;
+        }
+        else if (guessed_low() && validate_number() == true)
         {
             $_SESSION['message'] = "Sorry, guess again but higher.";
-        } else if (guessed_high() && validate_number() == true)
+        }
+        else if (guessed_high() && validate_number() == true)
         {
             $_SESSION['message'] = "Sorry, guess again but lower.";
         // Make sure only numerical values are guessed
-        } else if (guessed_high() or guessed_low() or $correct_guess && validate_number() == false)
+        }
+        else if (guessed_high() or guessed_low() or $correct_guess && validate_number() == false)
         {
             $_SESSION['message'] = "Please only enter numerical values.";
         }
