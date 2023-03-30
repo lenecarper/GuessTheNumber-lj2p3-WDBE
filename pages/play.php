@@ -24,11 +24,6 @@
             $_SESSION['message'] = "You got it! It took you " . guess_count() . " attempts. Your score has been uploaded to the leaderboards.";
             $_SESSION['winner'] = true;
         }
-        else if (isset($_POST['guess']) && $_SESSION['winner'] == true)
-        {
-            uploadScore();
-            $_SESSION['winner'] = false;
-        }
         else if (guessed_low() && validate_number() == true)
         {
             $_SESSION['message'] = "Sorry, guess again but higher.";
@@ -46,6 +41,11 @@
         {
             $_SESSION['message'] = "Out of tries.";
         }
+    }
+
+    if ($_SESSION['winner'] == true)
+    {
+        echo "test";
     }
 
     // Check if the secret number is set, the user has requested a reset or the user guessed the number correctly

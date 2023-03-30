@@ -71,12 +71,6 @@
             $_SESSION['tries']--;
             header("Refresh:0");
         }
-        // else if (isset($_POST['guess']) && $_SESSION['tries'] > 0 && $_POST['guess'] != null && $_SESSION['winner'] == true)
-        // {
-        //     $_SESSION['tries']--;
-        //     uploadScore();
-        //     header("Refresh:0");
-        // }
         else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)
         {
             $_SESSION['tries'] = 0;
