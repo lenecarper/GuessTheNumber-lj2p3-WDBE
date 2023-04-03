@@ -11,6 +11,7 @@
     $message = "";
     $_SESSION['winner'] = false;
     $errors = array();
+    $_SESSION['timeout'] = false;
 
     // Check the selected user settings
     // Make sure to upload these to the database later [!]
@@ -55,6 +56,11 @@
         {
             $_SESSION['sessionInfo'] = true;
         }
+
+        if ($_SESSION['timeout'] == true)
+        {
+            quit_game();
+        }
     }
 
     function check_display($display)
@@ -87,6 +93,11 @@
     //         }
     //     }
     // }
+
+    function disable_game()
+    {
+
+    }
 
     // Check the user's submitted guess
     function guess_submitted()

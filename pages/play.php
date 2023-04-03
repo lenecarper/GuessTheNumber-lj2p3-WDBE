@@ -58,7 +58,6 @@
     <title>Guess The Number</title>
     <!-- Load stylesheet and countdown script -->
     <link rel="stylesheet" href="../style/style.css" />
-    <script src="../inc/main.js"></script>
 </head>
 <body>
     <h1 id="index-header">Guess the number, <?= $_SESSION['username'] ?></h1>
@@ -72,8 +71,8 @@
         <form method="POST">
             <label for="user_guess" class="user-message">YOUR GUESS</label><br>
             <input id="user_guess" name="user_guess" class="guess-form" maxlength="4"><br><br>
-            <input type="submit" name="guess" value="Guess" class="btn-guess" <?php if ($_SESSION['tries'] == 0) { ?> disabled <?php } ?>/>
-            <input type="submit" name="reset" value="Reset" class="btn-reset" />
+            <input type="submit" name="guess" value="Guess" class="btn-guess" <?php if ($_SESSION['tries'] == 0 || $_SESSION['timeout'] == true) { ?> disabled <?php } ?>/>
+            <input type="submit" name="reset" value="Reset" class="btn-reset" <?php if ($_SESSION['tries'] == 0 || $_SESSION['timeout'] == true) { ?> disabled <?php } ?>/>
             <input type="submit" name="quit" value="Quit" class="btn-quit" />
         </form><br>
     </div>
@@ -99,6 +98,10 @@
     <script>
         function timer()
         {
+            // DEBUGGING ONLY
+            // Switch between getting / setting localStorage initially to prevent
+            // the 'time' stored to start at NULL and decrease into the negatives
+
             // let i = 0;
             // if (i = 0)
             // {
@@ -124,6 +127,7 @@
                     clearInterval(timer);
                     document.getElementById('time-left').innerHTML='Out of time! Please restart.';
                     i = 0;
+                    $_SESSION['timeout'] = true;
                 }
             }, 1000);
         }
