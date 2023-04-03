@@ -19,6 +19,7 @@
     {
         check_settings();
         quit_game();
+        // start_countdown();
         $_SESSION['winner'] = false;
     }
 
@@ -62,6 +63,30 @@
         var_dump($display, true);
         echo "</pre>";
     }
+
+    // Countdown timer using the set time limit from the user
+    // CURRENTLY AN INFINITE LOOP, CHANGE OR IT WILL CRASH
+
+    // function start_countdown()
+    // {
+    //     $time = $_SESSION['time'];
+
+    //     if (isset($_POST['guess']))
+    //     {
+    //         if ($time > 0)
+    //         {
+    //             for ($time = $_SESSION['time']; $time > 0; $time--)
+    //             {
+    //                 sleep(5);
+    //             }
+    //             if ($time == 0)
+    //             {
+    //                 $time = 0;
+    //                 $_SESSION['message'] = "Ran out of time, please restart.";
+    //             }
+    //         }
+    //     }
+    // }
 
     // Check the user's submitted guess
     function guess_submitted()

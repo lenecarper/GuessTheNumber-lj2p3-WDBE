@@ -7,7 +7,7 @@
 <head>
     <title>Guess The Number</title>
     <link rel="stylesheet" href="style/style.css" />
-    <script src="inc/main.js" /></script>
+    <!-- <script src="inc/main.js" /></script> -->
 </head>
 <body>
     <!-- <br><br><h1 id="index-header">SETTINGS</h1>   

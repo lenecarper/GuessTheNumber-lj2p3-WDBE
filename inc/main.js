@@ -1,20 +1,16 @@
-// var timeLeft = 17;
-// var counterTime = document.getElementById('countdown-time');
-// var timerId = setInterval(countdown, 1000);
+let timeLeft = "<?php echo $time; ?>";
 
+console.log(timeLeft);
 
-// function countdown() {
-//     if (timeLeft == -1) {
-//         clearTimeout(timerId);
-//         timerGone();
-//     } else {
-//         counterTime.innerHTML = timeLeft + ' seconds remaining';
-//         timeLeft--;
-//     }
-// }
+function countdown()
+{
+    for (let i = 0; i > timeLeft; i++)
+    {
+        timeLeft--;
+        document.getElementById('time-left').innerHTML = timeLeft;
+        console.log('test');
+    }
 
-// function timerGone() {
-//     alert("Time's up");
-// }
+}
 
-// document.onload = countdown();
+window.onload = countdown();
