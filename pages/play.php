@@ -60,7 +60,7 @@
     <link rel="stylesheet" href="../style/style.css" />
     <script src="../inc/main.js"></script>
 </head>
-<body onload="countdown()">
+<body>
     <h1 id="index-header">Guess the number, <?= $_SESSION['username'] ?></h1>
     <!-- Display a local message depending on the state of the game, saved in $_SESSION -->
     <p class="user-message"><?= $instruction ?></p><br>
@@ -91,10 +91,44 @@
     } ?>
     <div id="guess-container">
         <h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?><br>Tries: <?= $tries ?></h1>
-        <h1 id="time-left">Time: <?= $time ?></h1>
+        <h1 id="time-left" title="<?= $time ?>">Time Left:</h1>
         <div id="leaderboard-container">
             <?php getScore(); ?>
         </div>
     </div>
+    <script>
+        function timer()
+        {
+            // let i = 0;
+            // if (i = 0)
+            // {
+            //     var timeLeft = document.getElementById('time-left').title;
+            //     i++;
+            // }
+            // else if (i = 1)
+            // {
+            //     var timeLeft = localStorage.getItem("time");
+            // }
+            var timeLeft = localStorage.getItem("time");
+            var timer = setInterval(function()
+            {
+                document.getElementById('time-left').innerHTML='Time Left: '+ timeLeft + ' seconds';
+                timeLeft--;
+                localStorage.setItem("time", timeLeft);
+                if (timeLeft == 1)
+                {
+                    document.getElementById('time-left').innerHTML='Time Left: '+ timeLeft + ' second';
+                }
+                if (timeLeft < 0)
+                {
+                    clearInterval(timer);
+                    document.getElementById('time-left').innerHTML='Out of time! Please restart.';
+                    i = 0;
+                }
+            }, 1000);
+        }
+
+        window.onload = timer();
+    </script>
 </body>
 </html>

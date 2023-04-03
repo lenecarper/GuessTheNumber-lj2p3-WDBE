@@ -1,16 +1,14 @@
-let timeLeft = "<?php echo $time; ?>";
+// function timer()
+// {
+//     var timeLeft = document.getElementById('time-left').title;
+//     var timer = setInterval(function()
+//     {
+//         document.getElementById('time-left').innerHTML='Time Left: '+ timeLeft;
+//         timeLeft--;
+//         if (timeLeft < 0) {
+//             clearInterval(timer);
+//         }
+//     }, 1000);
+// }
 
-console.log(timeLeft);
-
-function countdown()
-{
-    for (let i = 0; i > timeLeft; i++)
-    {
-        timeLeft--;
-        document.getElementById('time-left').innerHTML = timeLeft;
-        console.log('test');
-    }
-
-}
-
-window.onload = countdown();
+// window.onload = timer();

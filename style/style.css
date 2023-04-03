@@ -89,6 +89,7 @@ body
     border: 1px solid white;
     width: 50%;
     padding: 8px;
+    font-size: 1.2em;
 }
 
 .previous-guess
@@ -197,8 +198,8 @@ input.user-check
 
 }
 
-/* INDEX STYLING */
-
+/* INDEX STYLING 
+(Imported from SCSS to CSS, usually shorter) */
 
 html, body {
     background: #002939;
