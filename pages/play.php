@@ -101,6 +101,9 @@
             // DEBUGGING ONLY
             // Switch between getting / setting localStorage initially to prevent
             // the 'time' stored to start at NULL and decrease into the negatives
+            
+            // Change this function before production, use PHP + JS to dynamically show time instead
+            // currently only a filler
 
             // let i = 0;
             // if (i = 0)
