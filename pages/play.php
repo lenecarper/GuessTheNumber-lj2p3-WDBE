@@ -95,47 +95,5 @@
             <?php getScore(); ?>
         </div>
     </div>
-    <!-- <script>
-        function timer()
-        {
-            // DEBUGGING ONLY
-            // Switch between getting / setting localStorage initially to prevent
-            // the 'time' stored to start at NULL and decrease into the negatives
-            
-            // Change this function before production, use PHP + JS to dynamically show time instead
-            // currently only a filler
-
-            // let i = 0;
-            // if (i = 0)
-            // {
-            //     var timeLeft = document.getElementById('time-left').title;
-            //     i++;
-            // }
-            // else if (i = 1)
-            // {
-            //     var timeLeft = localStorage.getItem("time");
-            // }
-            var timeLeft = localStorage.getItem("time");
-            var timer = setInterval(function()
-            {
-                document.getElementById('time-left').innerHTML='Time Left: '+ timeLeft + ' seconds';
-                timeLeft--;
-                localStorage.setItem("time", timeLeft);
-                if (timeLeft == 1)
-                {
-                    document.getElementById('time-left').innerHTML='Time Left: '+ timeLeft + ' second';
-                }
-                if (timeLeft < 0)
-                {
-                    clearInterval(timer);
-                    document.getElementById('time-left').innerHTML='Out of time! Please restart.';
-                    i = 0;
-                    $_SESSION['timeout'] = true;
-                }
-            }, 1000);
-        }
-
-        window.onload = timer();
-    </script> -->
 </body>
 </html>
