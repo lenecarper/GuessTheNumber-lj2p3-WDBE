@@ -11,7 +11,7 @@
     $message = "";
     $_SESSION['winner'] = false;
     $errors = array();
-    $_SESSION['timeout'] = false;
+    $_SESSION['startTime'] = time();
 
     // Check the selected user settings
     // Make sure to upload these to the database later [!]
@@ -57,9 +57,23 @@
             $_SESSION['sessionInfo'] = true;
         }
 
-        if ($_SESSION['timeout'] == true)
+        // if ($_SESSION['timeout'] == true)
+        // {
+        //     quit_game();
+        // }
+
+        if (isset($_POST['user_time']) && is_numeric($_POST['user_time']))
         {
-            quit_game();
+            $_SESSION['time'] = $_POST['user_time'];
+            $_SESSION['startTime'] = false;
+        }
+        if(!isset($_SESSION['elapsedTime']))
+        {
+            $_SESSION['elapsedTime'] = false;
+        }
+        else
+        {
+            $_SESSION['elapsedTime'] = (time() - $_SESSION['startTime']);
         }
     }
 

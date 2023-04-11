@@ -90,12 +90,12 @@
     } ?>
     <div id="guess-container">
         <h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?><br>Tries: <?= $tries ?></h1>
-        <h1 id="time-left" title="<?= $time ?>">Time Left:</h1>
+        <h1 id="time-left">Time Left: <?php $time - $_SESSION['elapsedTime'] ?></h1>
         <div id="leaderboard-container">
             <?php getScore(); ?>
         </div>
     </div>
-    <script>
+    <!-- <script>
         function timer()
         {
             // DEBUGGING ONLY
@@ -136,6 +136,6 @@
         }
 
         window.onload = timer();
-    </script>
+    </script> -->
 </body>
 </html>
