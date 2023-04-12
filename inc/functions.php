@@ -272,7 +272,7 @@
 
             global $errors;
             # Gather all the data into an SQL query
-            if ($_SESSION['winner'] == true)
+            if (isset($_POST['guess']))
             {
                 $upload = "INSERT into highscores (`username`, `minimum`, `maximum`, `tries`, `time`) VALUES ('$username', '$minimum', '$maximum', '$tries', '$time')";
                 # Query the data to be sent into the corresponding database tables

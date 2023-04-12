@@ -70,9 +70,9 @@
     <div id="form-container">
         <form method="POST">
             <label for="user_guess" class="user-message">YOUR GUESS</label><br>
-            <input id="user_guess" name="user_guess" class="guess-form" maxlength="4"><br><br>
-            <input type="submit" name="guess" value="Guess" class="btn-guess" <?php if ($_SESSION['tries'] == 0 || $_SESSION['timeout'] == true) { ?> disabled <?php } ?>/>
-            <input type="submit" name="reset" value="Reset" class="btn-reset" <?php if ($_SESSION['tries'] == 0 || $_SESSION['timeout'] == true) { ?> disabled <?php } ?>/>
+            <input id="user_guess" name="user_guess" class="guess-form" type="number" maxlength="4"><br><br>
+            <input type="submit" name="guess" value="Guess" class="btn-guess" <?php if ($_SESSION['tries'] == 0) { ?> disabled <?php } ?>/>
+            <input type="submit" name="reset" value="Reset" class="btn-reset" <?php if ($_SESSION['tries'] == 0) { ?> disabled <?php } ?>/>
             <input type="submit" name="quit" value="Quit" class="btn-quit" />
         </form><br>
     </div>
