@@ -13,14 +13,10 @@
     $errors = array();
     $_SESSION['startTime'] = time();
 
-    // Check the selected user settings
-    // Make sure to upload these to the database later [!]
-
     function init()
     {
         check_settings();
         quit_game();
-        // start_countdown();
         $_SESSION['winner'] = false;
     }
 
@@ -57,11 +53,6 @@
             $_SESSION['sessionInfo'] = true;
         }
 
-        // if ($_SESSION['timeout'] == true)
-        // {
-        //     quit_game();
-        // }
-
         if (isset($_POST['user_time']) && is_numeric($_POST['user_time']))
         {
             $_SESSION['time'] = $_POST['user_time'];
@@ -84,42 +75,14 @@
         echo "</pre>";
     }
 
-    // Countdown timer using the set time limit from the user
-    // CURRENTLY AN INFINITE LOOP, CHANGE OR IT WILL CRASH
-
-    // function start_countdown()
-    // {
-    //     $time = $_SESSION['time'];
-
-    //     if (isset($_POST['guess']))
-    //     {
-    //         if ($time > 0)
-    //         {
-    //             for ($time = $_SESSION['time']; $time > 0; $time--)
-    //             {
-    //                 sleep(5);
-    //             }
-    //             if ($time == 0)
-    //             {
-    //                 $time = 0;
-    //                 $_SESSION['message'] = "Ran out of time, please restart.";
-    //             }
-    //         }
-    //     }
-    // }
-
-    function disable_game()
-    {
-
-    }
-
     // Check the user's submitted guess
     function guess_submitted()
     {
         if (isset($_POST['guess']) && $_SESSION['tries'] > 0 && $_POST['guess'] != null)
         {
             $_SESSION['tries']--;
-            header("Refresh:0");
+            // Currently not updating in realtime to prevent session variables getting deleted
+            // header("Refresh:0");
         }
         else if (isset($_POST['guess']) && $_SESSION['tries'] == 0)
         {

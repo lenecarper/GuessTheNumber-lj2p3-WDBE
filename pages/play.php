@@ -1,8 +1,7 @@
 <?php
     // Require the functions file to import external functions
     require('../inc/functions.php');
-    // Set a local variable to display a message when the page loads
-    // In this case it's an explanation which displays the MIN/MAX guess values
+    // Set default variables when the page loads
     $minimum = $_SESSION['minimum'];
     $maximum = $_SESSION['maximum'];
     $tries = $_SESSION['tries'];
@@ -32,8 +31,7 @@
         else if (guessed_high() && validate_number() == true)
         {
             $_SESSION['message'] = "Sorry, guess again but lower.";
-        // Make sure only numerical values are guessed
-        }
+        }   // Make sure only numerical values are guessed
         else if (guessed_high() or guessed_low() or $correct_guess && validate_number() == false)
         {
             $_SESSION['message'] = "Please only enter numerical values.";
@@ -52,18 +50,17 @@
         check_settings();
     }    
 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
     <title>Guess The Number</title>
-    <!-- Load stylesheet and countdown script -->
     <link rel="stylesheet" href="../style/style.css" />
 </head>
 <body>
+    <!-- Display a message depending on the state of the game, saved in $_SESSION, aswell as username -->
     <h1 id="index-header">Guess the number, <?= $_SESSION['username'] ?></h1>
-    <!-- Display a local message depending on the state of the game, saved in $_SESSION -->
     <p class="user-message"><?= $instruction ?></p><br>
-    <!-- <p id="countdown-time"></p> -->
     <p class="user-message"><?= $_SESSION['message'] ?></p>
 
     <!-- The form to guess the number in -->
@@ -77,20 +74,23 @@
         </form><br>
     </div>
     <?php
-    if (isset($_SESSION['sessionInfo']))
-    {
-        if($_SESSION['sessionInfo'] == true)
+        if (isset($_SESSION['sessionInfo']))
         {
-            check_display($_SESSION);
+            if($_SESSION['sessionInfo'] == true)
+            {
+                check_display($_SESSION);
+            }
+            else
+            {
+                $_SESSION['sessionInfo'] = false;
+            }
         }
-        else
-        {
-            $_SESSION['sessionInfo'] = false;
-        }
-    } ?>
+    ?>
+    <!-- Store user information -->
     <div id="guess-container">
         <h1 class="previous-guess">Previous guess: <?= $last_guess ?><br><br>Secret number: <?= secret_number() ?><br>Tries: <?= $tries ?></h1>
         <h1 id="time-left">Time Left: <?php $time - $_SESSION['elapsedTime'] ?></h1>
+        <!-- Display a leaderboard from SQL database data -->
         <div id="leaderboard-container">
             <?php getScore(); ?>
         </div>
